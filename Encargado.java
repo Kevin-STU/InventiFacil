@@ -11,9 +11,9 @@ public class Encargado
     private Inventario inventario;
     private Producto producto;
     
-    public Encargado(Inventario inventario)
+    public Encargado()
     {
-        this.inventario = inventario;
+        this.inventario = Inventario.getInstance();
     }
     
     public void agregarProducto(Producto producto) {
