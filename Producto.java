@@ -13,7 +13,7 @@ public class Producto
     private String informacion;
     private float precioUnitario;
     
-    public Producto(String codigo, String nombre, int stock, String informacion, float precioUnitario)
+    public Producto(String codigo, String nombre, String informacion, float precioUnitario, int stock)
     {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -32,15 +32,6 @@ public class Producto
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    
-    public int getStock(){
-        return stock;
-    }
-    
-    public void setStock(int stock){
-        this.stock = stock;
-    }
-    
     public String getInformacion() {
         return informacion;
     }
@@ -48,11 +39,24 @@ public class Producto
     public void setInformacion(String nuevaInformacion) {
         this.informacion = nuevaInformacion;
     }
+    
     public float getPrecioUnitario(){
         return precioUnitario;
     }
     public void setPrecioUnitario(float precioUnitario){
-        this.precioUnitario = precioUnitario;
+        if (precioUnitario >= 0) {
+            this.precioUnitario = precioUnitario;
+        }
     }
+    public int getStock(){
+        return stock;
+    }
+    
+    public void setStock(int stock){
+        if (stock >= 0) {
+            this.stock = stock;
+        }
+    }
+    
     
 }
