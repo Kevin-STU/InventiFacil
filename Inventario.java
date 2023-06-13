@@ -8,55 +8,56 @@ import java.util.*;
  */
 public class Inventario
 {
-    // instance variables - replace the example below with your own
-    // private Producto producto;
     private Map<String, Producto> productos;
-    public Inventario()
-    {
-        productos = new HashMap<>(); 
- 
+    private static Inventario inventario;
+
+    private Inventario(){
+        this.productos = new HashMap<>(); 
+    }
+    public static Inventario getInstance(){
+        if (Inventario.inventario == null){
+            Inventario.inventario = new Inventario();
+        }
+        return Inventario.inventario;
     }
     
-    public void agregarProducto(Producto producto) {
-        productos.put(producto.getCodigo(), producto);
+    public void addProduct(Producto producto) {
+        this.productos.put(producto.getCodigo(), producto);
     }
     
     public boolean eliminarProducto(String codigo) {
-        if (productos.containsKey(codigo) ) {
-            productos.remove(codigo);
-            return true;
-        }
-        else {
+        if (!this.productos.containsKey(codigo) ) {
             return false;
         }
-        
+        this.productos.remove(codigo);
+        return true;
     }
     
     public void actualizarStock(String codigo, int cantidad) {
-        Producto producto = productos.get(codigo); // devuelve el valor 
+        Producto producto = this.productos.get(codigo); // devuelve el valor 
         if (producto != null) {
             producto.setStock(cantidad);
         }
         else {
             System.out.println("El producto con el código " + codigo + " no existe");
         }
-        
+
     }
     
     public Producto obtenerProducto(String codigo) {
-        return productos.get(codigo);
+        return this.productos.get(codigo);
     }
     
     /*public List<Producto> obtenerTodosLosProductos() {
-        return new ArrayList<>(productos.values());
+        return new ArrayList<>(this.productos.values());
     }*/
     
     public void obtenerProductos() {
-        if (productos.keySet().isEmpty() == true) {
+        if (this.productos.keySet().isEmpty() == true) {
                 System.out.println("No hay productos en el inventario.");
             } 
             else {
-                for (Producto producto : productos.values() ) {
+                for (Producto producto : this.productos.values() ) {
                         System.out.println("Código: " + producto.getCodigo() );
                         System.out.println("Nombre: " + producto.getNombre() );
                         System.out.println("Stock: " + producto.getStock() );

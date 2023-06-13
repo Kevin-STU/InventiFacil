@@ -17,7 +17,7 @@ public class Encargado
     }
     
     public void agregarProducto(Producto producto) {
-        inventario.agregarProducto(producto);
+        inventario.addProduct(producto);
     }
     
     public void eliminarProducto(String codigo) {
