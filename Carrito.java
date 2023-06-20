@@ -21,7 +21,10 @@ public class Carrito {
         // initialise instance variables
     }
 
-    public void addProduct(Producto producto) {
+    public boolean addProduct(Producto producto) {
+        if (!(producto instanceof Producto)) {
+            return false;
+        }
         // Revisar si el producto ya existe en el carrito
         if (this.miCarrito.containsKey(producto.getCodigo())) {
             // Si existe, aumentar la cantidad
@@ -31,9 +34,13 @@ public class Carrito {
             // Si no existe, agregarlo al carrito
             this.miCarrito.put(producto.getCodigo(), 1);
         }
+        return true;
     }
 
-    public void removeProduct(Producto producto) {
+    public boolean removeProduct(Producto producto) {
+        if (!(producto instanceof Producto)) {
+            return false;
+        }
         // Revisar si el producto ya existe en el carrito
         if (this.miCarrito.containsKey(producto.getCodigo())) {
             // Si existe, disminuir la cantidad
@@ -43,9 +50,12 @@ public class Carrito {
             } else {
                 this.miCarrito.remove(producto.getCodigo());
             }
+            return true;
         } else {
             System.out.println("El producto no existe en el carrito");
+            return false;
         }
+
     }
 
     public void clear() {
@@ -57,13 +67,13 @@ public class Carrito {
             Producto producto = this.inventario.obtenerProducto(codigo);
             if (producto == null) {
                 System.out.println("El producto con el código " + codigo + " no existe");
-                return;
+                continue;
             }
             int cantidad = this.miCarrito.get(codigo);
             int stock = producto.getStock();
             if (cantidad >= stock) {
                 System.out.println("No hay suficiente stock del producto " + producto.getNombre());
-                return;
+                continue;
             }
             producto.setStock(stock - cantidad);
             this.miCarrito.remove(codigo);
