@@ -1,14 +1,15 @@
 
+import java.util.*;
 /**
  * Write a description of class Administrador here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class Administrador
 {
-    // instance variables - replace the example below with your own
-    private Usuario usuario;
+    private List<Usuario> usuarios;
     private Inventario inventario;
     
     /**
@@ -16,8 +17,20 @@ public class Administrador
      */
     public Administrador()
     {
-        // initialise instance variables
-
+        usuarios = new ArrayList<>();
+        inventario = Inventario.getInstance();
+    }
+    
+    public void agregarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
+    }
+    
+    public void eliminarUsuario(Usuario usuario) {
+        usuarios.remove(usuario);
+    }
+    
+    public List<Usuario> getUusarios() {
+        return usuarios;
     }
     
     public void generarInformeVentas() {

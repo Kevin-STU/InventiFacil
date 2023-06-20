@@ -21,8 +21,9 @@ public class Inventario
         return Inventario.inventario;
     }
     
-    public void addProduct(Producto producto) {
+    public boolean addProduct(Producto producto) {
         this.productos.put(producto.getCodigo(), producto);
+        return true;
     }
     
     public boolean eliminarProducto(String codigo) {
@@ -48,9 +49,19 @@ public class Inventario
         return this.productos.get(codigo);
     }
     
-    /*public List<Producto> obtenerTodosLosProductos() {
+    public List<Producto> obtenerTodosLosProductos() {
         return new ArrayList<>(this.productos.values());
-    }*/
+    }
+    
+    public boolean retirarProducto(String codigo, String razon) {
+        if (productos.containsKey(codigo)) {
+            Producto producto = productos.get(codigo);
+            producto.retirarProducto(razon);
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     public void obtenerProductos() {
         if (this.productos.keySet().isEmpty() == true) {
@@ -61,6 +72,7 @@ public class Inventario
                         System.out.println("Código: " + producto.getCodigo() );
                         System.out.println("Nombre: " + producto.getNombre() );
                         System.out.println("Stock: " + producto.getStock() );
+                        System.out.println("Información: " + producto.getInformacion() );
                         System.out.println("----------------------");
                     }
             }

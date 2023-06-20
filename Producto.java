@@ -1,4 +1,4 @@
-
+import java.util.Date;
 /**
  * Write a description of class Producto here.
  * 
@@ -12,6 +12,9 @@ public class Producto
     private int stock;
     private String informacion;
     private float precioUnitario;
+    private Date fechaIngreso;
+    private Date fechaRetiro;
+    private String razonRetiro;
     
     public Producto(String codigo, String nombre, String informacion, float precioUnitario, int stock)
     {
@@ -20,6 +23,7 @@ public class Producto
         this.precioUnitario = precioUnitario;
         this.stock = stock;
         this.informacion = informacion;
+        this.fechaIngreso = new Date();
     }
     
     public String getCodigo(){
@@ -58,5 +62,23 @@ public class Producto
         }
     }
     
+    public Date getFechaIngreso () {
+        return fechaIngreso;
+    }
+    
+    public void retirarProducto(String razon) {
+        this.fechaRetiro = new Date();
+        this.razonRetiro = razon;
+        this.stock = 0;
+    }
+    
+    public Date getFechaRetiro() {
+        this.fechaRetiro = new Date();
+        return fechaRetiro;
+    }
+    
+    public String getRazonRetiro(String razon) {
+        return razon;
+    }
     
 }

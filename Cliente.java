@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Cliente here.
  * 
@@ -8,26 +8,36 @@
 public class Cliente
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private String nombre;
+    private String identificacion;
+    private Map<String, String> preferencias;
     /**
      * Constructor for objects of class Cliente
      */
-    public Cliente()
+    public Cliente(String nombre, String identificacion)
     {
-        // initialise instance variables
-        x = 0;
+        this.nombre = nombre;
+        this.identificacion = identificacion;
+        this.preferencias = new HashMap<>();
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public String getIdentificacion() {
+        return identificacion;
+    }
+    
+    public Map<String, String> getPreferencias() {
+        return preferencias;
+    }
+    
+    public void agregarPreferencia(String clave,String valor) {
+        preferencias.put(clave, valor);
+    }
+    
+    public void eliminarPreferencia(String clave) {
+        preferencias.remove(clave);
     }
 }

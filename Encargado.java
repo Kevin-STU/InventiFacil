@@ -1,4 +1,5 @@
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  * Write a description of class Encargado here.
  * 
@@ -16,14 +17,24 @@ public class Encargado
         this.inventario = Inventario.getInstance();
     }
     
-    public void agregarProducto(Producto producto) {
-        inventario.addProduct(producto);
+    public boolean agregarProducto(Producto producto) {
+        boolean productoAgregado = inventario.addProduct(producto);
+        if (productoAgregado) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    public void eliminarProducto(String codigo) {
+    public void eliminarProducto(String codigo, String razon) {
+        Producto producto = inventario.obtenerProducto(codigo);
+        Date fechaRetiro = producto.getFechaRetiro();
+        String razonRetiro = producto.getRazonRetiro(razon);
         boolean eliminado = inventario.eliminarProducto(codigo);
         if (eliminado) {
             System.out.println("Producto eliminado correctamente");
+            System.out.println("Fecha de retiro: " + fechaRetiro);
+            System.out.println("Razon de retiro: " + razonRetiro);
         }
         else {
             System.out.println("El producto con el código " + codigo + " no existe en el inventario.");
