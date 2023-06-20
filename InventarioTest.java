@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 /**
  * The test class InventarioTest.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * author (Kevin Gallardo y Kevin Prada)
+ * version (1.0)
  */
 public class InventarioTest
 {

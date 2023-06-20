@@ -1,22 +1,31 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
 /**
- * Write a description of class Encargado here.
+ * La clase Encargado representa a un encargado que realiza diversas acciones en el inventario.
+ * Estas acciones incluyen agregar y eliminar productos, así como modificar información de los productos.
+ * También puede registrar la entrada y salida de productos en el inventario.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * author (Kevin Gallardo y Kevin Prada)
+ * version (1.0)
  */
 public class Encargado
 {
     // instance variables - replace the example below with your own
     private Inventario inventario;
-    private Producto producto;
-    
+        /**
+     * Constructor de la clase Encargado.
+     */
     public Encargado()
     {
         this.inventario = Inventario.getInstance();
     }
-    
+        /**
+     * Agrega un producto al inventario.
+     * 
+     * @param producto El producto a agregar.
+     * @return true si el producto se agregó correctamente, false de lo contrario.
+     */
+
     public boolean agregarProducto(Producto producto) {
         boolean productoAgregado = inventario.addProduct(producto);
         if (productoAgregado) {
@@ -25,7 +34,13 @@ public class Encargado
             return false;
         }
     }
-    
+        /**
+     * Elimina un producto del inventario.
+     * 
+     * @param codigo El código del producto a eliminar.
+     * @param razon La razón para eliminar el producto.
+     * @return Un mensaje indicando si el producto se eliminó correctamente o no.
+     */
     public String eliminarProducto(String codigo, String razon) {
         Producto producto = inventario.obtenerProducto(codigo);
         if (producto != null){
@@ -47,7 +62,14 @@ public class Encargado
             return "El producto con el código " + codigo + " no existe en el inventario.";
         }
     }
-
+    /**
+     * Modifica la información de un producto en el inventario.
+     * 
+     * @param codigo El código del producto a modificar.
+     * @param nStock El nuevo stock del producto.
+     * @param nuevaInformacion La nueva información del producto.
+     * @return Un mensaje indicando si el producto se modificó correctamente o no.
+     */
     public String modificarProducto(String codigo, int nStock, String nuevaInformacion) {
         Producto producto = inventario.obtenerProducto(codigo);
         if (producto != null) {
@@ -61,7 +83,14 @@ public class Encargado
             return "El producto con el código " + codigo + " no existe en el inventario.";
         }
     }
-    
+        /**
+     * Registra la entrada o salida de productos en el inventario.
+     * 
+     * @param codigo El código del producto.
+     * @param cantidad La cantidad
+     * @param estado El estado del producto.
+     * @param permiteDevolucion true si el producto permite devolución, false de lo contrario.
+     */
     public void registrarEntradaSalida(String codigo, int cantidad, String estado, boolean permiteDevolucion) {
         
     }

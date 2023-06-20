@@ -1,32 +1,46 @@
+import java.util.Map;
 
 /**
- * Write a description of class Vendedor here.
+ * La clase Vendedor representa a un vendedor en el sistema.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * author (Kevin Gallardo y Kevin Prada)
+ * version (1.0)
  */
 public class Vendedor
 {
     // instance variables - replace the example below with your own
     private Carrito carrito;
     private Cliente cliente;
+    public Carrito carritoActual;
 
     /**
-     * Constructor for objects of class Vendedor
+     * Constructor de la clase Vendedor.
      */
     public Vendedor()
     {
-        carrito = new Carrito();
+        createCarrito();
     }
-    
+        /**
+     * Crea un nuevo carrito para el vendedor.
+     */
     public void createCarrito(){
         this.carrito = new Carrito();
+        this.carritoActual = this.carrito;
     }
-    
+       /**
+     * Agrega un producto al carrito del vendedor.
+     * 
+     * @param producto El producto a agregar.
+     */
     public void agregarProductoAlCarrito(Producto producto) {
         carrito.addProduct(producto);
+        this.mostrarCarrito();
     }
-    
+        /**
+     * Elimina un producto del carrito del vendedor.
+     * 
+     * @param producto El producto a eliminar.
+     */
     public void eliminarProductoDelCarrito(Producto producto) {
         carrito.removeProduct(producto);
     }
@@ -35,8 +49,8 @@ public class Vendedor
         carrito.clear();
     }
     
-    public void realizarVenta() {
-        carrito.sell();
+    public boolean realizarVenta() {
+        return carrito.sell();
     }
     
     public void setCliente(Cliente cliente) {
@@ -46,4 +60,22 @@ public class Vendedor
     public Cliente getCliente() {
         return cliente;
     }
+   /**
+     * Muestra los productos en el carrito del vendedor.
+     */
+    public void mostrarCarrito() {
+        System.out.println("=== Carrito ===");
+        for (Map<String, String> producto : carrito.getProductos()) {
+            System.out.println("Código: " + producto.get("codigo"));
+            System.out.println("Nombre: " + producto.get("nombre"));
+            System.out.println("Precio: " + producto.get("precio"));
+            System.out.println("Cantidad: " + producto.get("cantidad"));
+            System.out.println("------------------------");
+            
+        }
+        double costoTotal = carrito.getTotalCosto();
+        System.out.println("Costo total del carrito: " + costoTotal);
+    }
+
+
 }

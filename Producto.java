@@ -1,9 +1,9 @@
 import java.util.Date;
 /**
- * Write a description of class Producto here.
+ * La clase Producto representa un producto en el inventario.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * author (Kevin Gallardo y Kevin Prada)
+ * version (1.0)
  */
 public class Producto
 {
@@ -14,8 +14,15 @@ public class Producto
     private float precioUnitario;
     private Date fechaIngreso;
     private Date fechaRetiro;
-    private String razonRetiro;
-    
+        /**
+     * Constructor de la clase Producto.
+     * 
+     * @param codigo El código del producto.
+     * @param nombre El nombre del producto.
+     * @param informacion La información del producto.
+     * @param precioUnitario El precio unitario del producto.
+     * @param stock El stock del producto.
+     */
     public Producto(String codigo, String nombre, String informacion, float precioUnitario, int stock)
     {
         this.codigo = codigo;
@@ -25,7 +32,6 @@ public class Producto
         this.informacion = informacion;
         this.fechaIngreso = new Date();
     }
-    
     public String getCodigo(){
         return codigo;
     }
@@ -61,22 +67,38 @@ public class Producto
             this.stock = stock;
         }
     }
-    
+        /**
+     * Obtiene la fecha de ingreso del producto.
+     * 
+     * @return La fecha de ingreso del producto.
+     */
     public Date getFechaIngreso () {
         return fechaIngreso;
     }
-    
+        /**
+     * Retira el producto del inventario.
+     * 
+     * @param razon La razón del retiro del producto.
+     */
     public void retirarProducto(String razon) {
         this.fechaRetiro = new Date();
-        this.razonRetiro = razon;
         this.stock = 0;
     }
-    
+        /**
+     * Obtiene la fecha de retiro del producto.
+     * 
+     * @return La fecha de retiro del producto.
+     */
     public Date getFechaRetiro() {
         this.fechaRetiro = new Date();
         return fechaRetiro;
     }
-    
+        /**
+     * Obtiene la razón de retiro del producto.
+     * 
+     * @param razon La razón de retiro del producto.
+     * @return La razón de retiro del producto.
+     */
     public String getRazonRetiro(String razon) {
         return razon;
     }

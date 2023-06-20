@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Usuario here.
+ * La clase Usuario representa un usuario en el sistema.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * author (Kevin Gallardo y Kevin Prada)
+ * version (1.0)
  */
 public class Usuario
 {
